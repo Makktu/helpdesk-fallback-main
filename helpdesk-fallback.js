@@ -406,10 +406,12 @@ class HelpdeskFallback {
   }
 
   printBatch() {
-    const quantity = prompt('How many forms would you like to print? (1-9999):');
-    
+    const quantity = prompt(
+      'How many forms would you like to print? (1-9999):'
+    );
+
     if (quantity === null) return; // User cancelled
-    
+
     const num = parseInt(quantity);
     if (isNaN(num) || num < 1 || num > 9999) {
       alert('Please enter a valid number between 1 and 9999');
@@ -424,38 +426,38 @@ class HelpdeskFallback {
 
     // Show confirmation dialog
     const confirmed = confirm(
-      `You are about to print ${num} blank Helpdesk Fallback sheets.\n\n${startJobDisplay} will be the first Job Reference Number\n\n${endJobDisplay} will be the final Job Reference Number.\n\n🟢 Click OK to confirm\n\n🔴 Click CANCEL to cancel`
+      `You are about to print ${num} blank Helpdesk Fallback sheets.\n\n${startJobDisplay} will be the first Job Reference Number\n\n${endJobDisplay} will be the final Job Reference Number.\n\nOK to confirm ✅\n\nCancel to cancel ❌`
     );
 
     if (!confirmed) return; // User cancelled confirmation
 
     // Get current form values to use as template
     const formData = this.getFormData();
-    
+
     // Create print container
     const printContainer = document.createElement('div');
     printContainer.id = 'print-content';
-    
+
     // Generate forms
     for (let i = 0; i < num; i++) {
       const jobNumber = (startJobNumber + i).toString().padStart(4, '0');
       const pageDiv = this.createPrintPage(formData, jobNumber);
       printContainer.appendChild(pageDiv);
     }
-    
+
     // Add to body temporarily
     document.body.appendChild(printContainer);
     document.body.classList.add('batch-printing');
-    
+
     // Update the stored job number to account for printed forms
     const newLastNumber = endJobNumber.toString();
     localStorage.setItem('lastJobNumber', newLastNumber);
     this.currentJobNumber = (parseInt(newLastNumber) + 1).toString();
     document.getElementById('job-reference').value = this.currentJobNumber;
-    
+
     // Trigger print
     window.print();
-    
+
     // Clean up
     setTimeout(() => {
       document.body.classList.remove('batch-printing');
@@ -477,14 +479,14 @@ class HelpdeskFallback {
       to: document.getElementById('to').value,
       description: document.getElementById('description').value,
       passedTo: document.getElementById('passed-to').value,
-      operator: document.getElementById('operator-select').value
+      operator: document.getElementById('operator-select').value,
     };
   }
 
   createPrintPage(formData, jobNumber) {
     const pageDiv = document.createElement('div');
     pageDiv.className = 'print-page';
-    
+
     pageDiv.innerHTML = `
       <div class="helpdesk-fallback-form">
         <h2>HELPDESK FALLBACK SHEET</h2>
@@ -529,7 +531,9 @@ class HelpdeskFallback {
         
         <div class="form-group">
           <label>DESCRIPTION</label>
-          <div class="static-field description-field">${formData.description || ''}</div>
+          <div class="static-field description-field">${
+            formData.description || ''
+          }</div>
         </div>
         
         <div class="form-group">
@@ -548,7 +552,7 @@ class HelpdeskFallback {
         </div>
       </div>
     `;
-    
+
     return pageDiv;
   }
 
