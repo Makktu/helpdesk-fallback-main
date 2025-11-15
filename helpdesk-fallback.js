@@ -61,14 +61,14 @@ class HelpdeskFallback {
   }
 
   init() {
-    // Initialize date and time
-    this.initializeDateTime();
-
-    // Populate time dropdowns
+    // Populate time dropdowns first (must be before setting values)
     this.populateTimeDropdowns();
 
     // Populate operator dropdown
     this.populateOperatorDropdown();
+
+    // Initialize date and time (after dropdowns are populated)
+    this.initializeDateTime();
 
     // Set job reference number
     document.getElementById('job-reference').value = this.currentJobNumber;
