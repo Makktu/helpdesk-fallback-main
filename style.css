@@ -1,0 +1,346 @@
+/* Root CSS Custom Properties */
+:root {
+  --bg: #b1cecd;
+  --text: #1f2937;
+  --card-bg: #ffffff;
+  --card-text: #374151;
+  --card-border: #e5e7eb;
+  --muted-text: #4b5563;
+  --input-bg: #ffffff;
+  --input-border: #d1d5db;
+  --select-bg: #f9fafb;
+  --chip-bg: #ffffff;
+  --chip-border: #d1d5db;
+  --button-bg: #f3f4f6;
+  --button-border: #e5e7eb;
+  --button-hover-bg: #e5e7eb;
+  --reset-bg: #ffffff;
+  --reset-border: #d1d5db;
+}
+
+.dark {
+  --bg: #032059;
+  --text: #e5e7eb;
+  --card-bg: #0f172a;
+  --card-text: #e5e7eb;
+  --card-border: #1f2a44;
+  --muted-text: #cbd5e1;
+  --input-bg: #0b1220;
+  --input-border: #24324d;
+  --select-bg: #111827;
+  --chip-bg: #0b1220;
+  --chip-border: #24324d;
+  --button-bg: #111827;
+  --button-border: #24324d;
+  --button-hover-bg: #182338;
+  --reset-bg: #0b1220;
+  --reset-border: #24324d;
+}
+
+body {
+  font-family: 'Montserrat', sans-serif;
+  margin: 0;
+  padding: 20px;
+  background: var(--bg);
+  color: var(--text);
+}
+
+.helpdesk-fallback-form {
+  max-width: 595px;
+  margin: 20px auto;
+  padding: 40px;
+  font-family: Arial, sans-serif;
+  color: var(--card-text);
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  box-sizing: border-box;
+  position: relative;
+}
+
+.helpdesk-fallback-form h2 {
+  margin: 0 0 30px;
+  color: var(--text);
+  font-size: 20px;
+  font-weight: normal;
+}
+
+.form-group {
+  margin-bottom: 20px;
+  display: flex;
+  align-items: flex-start;
+}
+
+.form-group label {
+  width: 150px;
+  font-weight: bold;
+  padding-top: 5px;
+  font-size: 13px;
+  color: var(--muted-text);
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: calc(100% - 160px);
+  padding: 6px 8px;
+  border: 1px solid var(--input-border);
+  border-radius: 3px;
+  font-size: 13px;
+  box-sizing: border-box;
+  background: var(--input-bg);
+  color: var(--card-text);
+}
+
+.dropdown-group select {
+  width: 250px;
+  background-color: var(--select-bg);
+}
+
+.date-time-group .date-time-container {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.date-display {
+  padding: 6px 8px;
+  border: 1px solid var(--input-border);
+  border-radius: 3px;
+  background: var(--input-bg);
+  min-width: 80px;
+  text-align: center;
+  font-size: 13px;
+  color: var(--card-text);
+}
+
+.time-inputs {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  margin-left: 8px;
+  font-size: 13px;
+  color: var(--card-text);
+}
+
+.time-inputs select {
+  width: 55px;
+  padding: 5px 2px;
+  border: 1px solid var(--input-border);
+  border-radius: 3px;
+  background: var(--input-bg);
+  text-align: center;
+  color: var(--card-text);
+}
+
+textarea {
+  min-height: 195px; /* 30% increase from 150px */
+  max-height: 300px; /* Cap maximum height for layout */
+  overflow-y: auto; /* Allow scrolling if content exceeds max */
+  resize: none; /* Prevent manual resizing */
+}
+
+.button-group {
+  margin-top: 30px;
+  display: flex;
+  gap: 10px;
+}
+
+.button-group button {
+  padding: 6px 16px;
+  background: var(--button-bg);
+  border: 1px solid var(--button-border);
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 13px;
+  color: var(--card-text);
+}
+
+.button-group .reset-button {
+  margin-left: auto;
+  background: var(--reset-bg);
+  border-color: var(--reset-border);
+}
+
+.button-group button:hover {
+  background: var(--button-hover-bg);
+}
+
+.button-group .reset-button:hover {
+  background: var(--button-hover-bg);
+  border-color: var(--button-border);
+}
+
+#theme-toggle {
+  position: fixed;
+  top: 12px;
+  right: 12px;
+  width: 36px;
+  height: 36px;
+  border-radius: 9999px;
+  background: var(--button-bg);
+  border: 1px solid var(--button-border);
+  color: var(--text);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.06);
+}
+
+#theme-toggle:hover {
+  background: var(--button-hover-bg);
+}
+
+@media print {
+  body {
+    margin: 0;
+    padding: 0;
+    background: white;
+  }
+
+  @page {
+    size: A4;
+    margin: 1.5cm;
+  }
+
+  .helpdesk-fallback-form {
+    max-width: 100%;
+    width: 100%;
+    margin: 0 auto;
+    padding: 25px 50px 30px;
+    border: none;
+    box-shadow: none;
+  }
+
+  .helpdesk-fallback-form h2 {
+    font-size: 26px;
+    margin: 0 0 25px;
+    font-weight: bold;
+    color: #000 !important;
+  }
+
+  .form-group {
+    margin-bottom: 18px;
+  }
+
+  .form-group label {
+    width: 200px;
+    font-size: 16px;
+    font-weight: bold;
+    padding-top: 8px;
+    color: #000 !important;
+  }
+
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    width: calc(100% - 210px);
+    padding: 10px 12px;
+    font-size: 16px;
+    border: 2px solid #000 !important;
+    min-height: 32px;
+    background: #fff !important;
+    color: #000 !important;
+  }
+
+  .dropdown-group select {
+    width: 300px;
+  }
+
+  .date-display {
+    padding: 10px 12px;
+    font-size: 16px;
+    min-width: 100px;
+    border: 2px solid #000 !important;
+    background: #fff !important;
+    color: #000 !important;
+  }
+
+  .time-inputs {
+    font-size: 16px;
+    color: #000 !important;
+  }
+
+  .time-inputs select {
+    width: 65px;
+    padding: 8px 4px;
+    font-size: 16px;
+    border: 2px solid #000 !important;
+    background: #fff !important;
+    color: #000 !important;
+  }
+
+  .time-inputs span {
+    color: #000 !important;
+  }
+
+  textarea {
+    min-height: 200px !important;
+    max-height: 200px !important;
+    font-size: 16px !important;
+  }
+
+  .button-group {
+    display: none;
+  }
+
+  #theme-toggle {
+    display: none;
+  }
+
+  /* Batch printing styles - only apply when body has batch-printing class */
+  body.batch-printing > *:not(#print-content) {
+    display: none !important;
+  }
+
+  body.batch-printing #print-content {
+    display: block !important;
+  }
+
+  .print-page {
+    page-break-after: always;
+    min-height: 100vh;
+  }
+
+  .print-page:last-child {
+    page-break-after: auto;
+  }
+
+  /* Static field styling for printed forms */
+  .static-field {
+    width: calc(100% - 210px);
+    padding: 10px 12px;
+    border: 2px solid #000 !important;
+    font-size: 16px;
+    box-sizing: border-box;
+    background: #fff !important;
+    color: #000 !important;
+    min-height: 32px;
+  }
+
+  .description-field {
+    min-height: 200px;
+    max-height: 200px;
+    white-space: pre-wrap;
+    overflow-y: auto;
+  }
+
+  /* Date and time field styling for batch printing */
+  .date-field {
+    min-width: 100px;
+    text-align: center;
+    padding: 10px 12px;
+    border: 2px solid #000 !important;
+    background: #fff !important;
+    color: #000 !important;
+  }
+
+  .time-field {
+    width: 65px;
+    padding: 8px 4px;
+    text-align: center;
+    border: 2px solid #000 !important;
+    background: #fff !important;
+    color: #000 !important;
+  }
+}
