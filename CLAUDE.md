@@ -7,7 +7,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 **Helpdesk Fallback Form** is a standalone, single-page web application for helpdesk staff to log and track tasks during system outages. The application follows a conventional HTML-CSS-JavaScript structure with three files: `index.html` (form skeleton), `style.css` (all styles), and `helpdesk-fallback.js` (application logic).
 
 **Key Design Principles:**
-- Works completely offline (no internet required after initial load)
+- Can work completely offline locally, as well as online
 - No external dependencies (except CDN font and animate.css for visual polish)
 - All data is ephemeral except: job number sequence, operator name preference, and theme preference (stored in localStorage)
 - No backend, no database - everything runs client-side in the browser
