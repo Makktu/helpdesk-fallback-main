@@ -244,8 +244,41 @@ class HelpdeskFallback {
       return;
     }
 
-    // Calculate starting and ending job numbers
-    const startJobNumber = parseInt(this.currentJobNumber);
+    // Ask if user wants to specify custom starting job number
+    const wantsCustomStart = confirm(
+      'Do you want to specify the job number to start from?\n\nOK = Yes (specify custom number)\nCancel = No (use current job number)'
+    );
+
+    let startJobNumber;
+
+    if (wantsCustomStart) {
+      // Prompt for custom starting number
+      let isValid = false;
+      while (!isValid) {
+        const customStart = prompt(
+          'Enter the job number to start from (0-9999999):'
+        );
+
+        // Check if user cancelled
+        if (customStart === null) {
+          return; // Cancel the entire batch operation
+        }
+
+        // Validate input
+        const customNum = parseInt(customStart);
+        if (!isNaN(customNum) && customNum >= 0 && customNum <= 9999999) {
+          startJobNumber = customNum;
+          isValid = true;
+        } else {
+          alert('Please enter a valid number between 0 and 9999999');
+        }
+      }
+    } else {
+      // Use current job number
+      startJobNumber = parseInt(this.currentJobNumber);
+    }
+
+    // Calculate ending job number
     const endJobNumber = startJobNumber + num - 1;
     const startJobDisplay = startJobNumber.toString().padStart(4, '0');
     const endJobDisplay = endJobNumber.toString().padStart(4, '0');
