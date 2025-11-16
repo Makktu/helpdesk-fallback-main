@@ -246,7 +246,7 @@ class HelpdeskFallback {
 
     // Ask if user wants to specify custom starting job number
     const wantsCustomStart = confirm(
-      'Do you want to specify the job number to start from?\n\nOK = Yes (specify custom number)\nCancel = No (use current job number)'
+      `Do you want to specify the job number to start from?\n\n✅ OK = Yes (specify custom number)\n❌ Cancel = No (use current job number)`
     );
 
     let startJobNumber;
@@ -285,7 +285,7 @@ class HelpdeskFallback {
 
     // Show confirmation dialog
     const confirmed = confirm(
-      `You are about to print ${num} blank Helpdesk Fallback sheets.\n\n${startJobDisplay} will be the first Job Reference Number\n\n${endJobDisplay} will be the final Job Reference Number.\n\nOK to confirm ✅\n\nCancel to cancel ❌`
+      `You will print ${num} blank Helpdesk Fallback sheets.\n\n${startJobDisplay} will be the first Job Reference Number\n\n${endJobDisplay} will be the last Job Reference Number.\n\nOK to confirm ✅\n\nCancel to cancel ❌\n\n(After this you will see the Print Preview window for a final check before actually printing.) `
     );
 
     if (!confirmed) return; // User cancelled confirmation
