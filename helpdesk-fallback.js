@@ -285,7 +285,7 @@ class HelpdeskFallback {
 
     // Show confirmation dialog
     const confirmed = confirm(
-      `You will print ${num} blank Helpdesk Fallback sheets.\n\n${startJobDisplay} will be the first Job Reference Number\n\n${endJobDisplay} will be the last Job Reference Number.\n\nOK to confirm ✅\n\nCancel to cancel ❌\n\n(After this you will see the Print Preview window for a final check before actually printing.) `
+      `You will print ${num} blank Helpdesk Fallback sheets.\n\n${startJobDisplay} will be the first Job Reference Number\n\n${endJobDisplay} will be the last Job Reference Number.\n\nOK to confirm ✅\n\n(After this you will see the Print Preview window for a final check before actually printing.)\n\nCancel to cancel completely ❌ `
     );
 
     if (!confirmed) return; // User cancelled confirmation
