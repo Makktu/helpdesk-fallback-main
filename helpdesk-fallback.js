@@ -99,10 +99,21 @@ class HelpdeskFallback {
     });
 
     // Button event listeners
-    document.getElementById('clear-btn').addEventListener('click', () => this.clearForm());
-    document.getElementById('print-btn').addEventListener('click', () => window.print());
-    document.getElementById('print-batch-btn').addEventListener('click', () => this.printBatch());
-    document.getElementById('reset-btn').addEventListener('click', () => this.resetJobNumbers());
+    document
+      .getElementById('clear-btn')
+      .addEventListener('click', () => this.clearForm());
+    document.getElementById('print-btn').addEventListener('click', () => {
+      alert(
+        'IMPORTANT: In the next print dialog window, leave "Number of Copies" set to 1. You have already selected the option of printing 1'
+      );
+      window.print();
+    });
+    document
+      .getElementById('print-batch-btn')
+      .addEventListener('click', () => this.printBatch());
+    document
+      .getElementById('reset-btn')
+      .addEventListener('click', () => this.resetJobNumbers());
 
     // Textarea auto-expansion
     const textarea = document.getElementById('description');
@@ -285,7 +296,7 @@ class HelpdeskFallback {
 
     // Show confirmation dialog
     const confirmed = confirm(
-      `You will print ${num} blank Helpdesk Fallback sheets.\n\n${startJobDisplay} will be the first Job Reference Number\n\n${endJobDisplay} will be the last Job Reference Number.\n\nOK to confirm ✅\n\n(After this you will see the Print Preview window for a final check before actually printing.)\n\nCancel to cancel completely ❌ `
+      `You will print ${num} blank Helpdesk Fallback sheets.\n\n${startJobDisplay} will be the first Job Reference Number\n\n${endJobDisplay} will be the last Job Reference Number.\n\n✅ OK to confirm\n\n❌ Cancel to cancel`
     );
 
     if (!confirmed) return; // User cancelled confirmation
@@ -314,7 +325,10 @@ class HelpdeskFallback {
     this.currentJobNumber = (parseInt(newLastNumber) + 1).toString();
     document.getElementById('job-reference').value = this.currentJobNumber;
 
-    // Trigger print
+    // Trigger print with warning
+    alert(
+      `‼️ IMPORTANT ‼️\n\n👉 In the Print Dialog window, leave "Copies" set to 1\n\n (You've already chosen to print ${num} forms.)`
+    );
     window.print();
 
     // Clean up
