@@ -327,7 +327,7 @@ class HelpdeskFallback {
 
     // Trigger print with warning
     alert(
-      `‼️ IMPORTANT ‼️\n\n👉 In the Print Dialog window, leave "Copies" set to 1\n\n (You've already chosen to print ${num} forms.)`
+      `‼️ ‼️ ‼️ IMPORTANT ‼️ ‼️ ‼️\n\n👉 In the next window, leave "Copies" set to 1.`
     );
     window.print();
 
